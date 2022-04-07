@@ -42,6 +42,7 @@ const pizzaController = {
     // PUT /api/pizzas/:id
     updatePizza({ params, body }, res) {
         // set third parameter to true because if it will return original document if not
+        // Updates and returns as a response through the find one
         Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
@@ -55,6 +56,7 @@ const pizzaController = {
     // delete pizza
     // DELETE /api/pizzas/:id
     deletePizza({ params }, res) {
+        // Updates and returns as a response through the find one
         Pizza.findOneAndDelete({ _id: params.id })
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
