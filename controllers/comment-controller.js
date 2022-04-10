@@ -14,7 +14,7 @@ const commentController = {
                     { $push: { comments: _id } },
                     // will return collection not updated if set to false
                     // when set to true it will return pizza with updated comment
-                    { new: true }
+                    { new: true, runValidators: true }
                 )
             })
             .then(dbPizzaData => {
@@ -30,7 +30,7 @@ const commentController = {
         Comment.findOneAndUpdate(
             { _id: params.commentId },
             { $push: { replies: body } },
-            { new: true }
+            { new: true, runValidators: true }
         )
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
